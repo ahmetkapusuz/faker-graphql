@@ -1,9 +1,24 @@
+type Query {
+  user: User
+  address: Address
+}
+
 type User {
   firstName: String
   lastName: String
   email: String
+  userName: String
+  password: String
+  avatar: String
 }
 
-type Query {
-  user: User
+type Address {
+  streetName: String
+  streetSuffix: String
+  zipCode: String
+  county: String
+  state: String
+  stateAbbr: String
+  country: String
+  countryCode: String
 }

@@ -1,7 +1,8 @@
-import { User } from "../types";
+import { User, Address } from "../types";
 
 export interface Faker {
   getUser: () => User;
+  getAddress: () => Address;
 }
 
 export interface FakerDataSources {

@@ -1,12 +1,12 @@
-import { User } from "../types";
+import { User, Address } from "../types";
 import { FakerContext } from "../common/types";
 
 export default {
-  user: (
+  user: (parent: unknown, args: unknown, { dataSources }: FakerContext): User =>
+    dataSources.faker.getUser(),
+  address: (
     parent: unknown,
     args: unknown,
     { dataSources }: FakerContext
-  ): User => {
-    return dataSources.faker.getUser();
-  },
+  ): Address => dataSources.faker.getAddress(),
 };
