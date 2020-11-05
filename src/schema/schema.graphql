@@ -4,6 +4,8 @@ type Query {
   address: Address
   blogPost: BlogPost
   blogPosts(count: Int): [BlogPost]
+  todo: Todo
+  todos(count: Int): [Todo]
 }
 
 type User {
@@ -35,4 +37,10 @@ type BlogPost {
   publishedAt: String
   thumbnailImageUrl: String
   imageUrl: String
+}
+
+type Todo {
+  id: ID
+  title: String
+  completed: Boolean
 }

@@ -18,6 +18,8 @@ export type Query = {
   address?: Maybe<Address>;
   blogPost?: Maybe<BlogPost>;
   blogPosts?: Maybe<Array<Maybe<BlogPost>>>;
+  todo?: Maybe<Todo>;
+  todos?: Maybe<Array<Maybe<Todo>>>;
 };
 
 export type QueryUsersArgs = {
@@ -25,6 +27,10 @@ export type QueryUsersArgs = {
 };
 
 export type QueryBlogPostsArgs = {
+  count?: Maybe<Scalars["Int"]>;
+};
+
+export type QueryTodosArgs = {
   count?: Maybe<Scalars["Int"]>;
 };
 
@@ -60,4 +66,11 @@ export type BlogPost = {
   publishedAt?: Maybe<Scalars["String"]>;
   thumbnailImageUrl?: Maybe<Scalars["String"]>;
   imageUrl?: Maybe<Scalars["String"]>;
+};
+
+export type Todo = {
+  __typename?: "Todo";
+  id?: Maybe<Scalars["ID"]>;
+  title?: Maybe<Scalars["String"]>;
+  completed?: Maybe<Scalars["Boolean"]>;
 };

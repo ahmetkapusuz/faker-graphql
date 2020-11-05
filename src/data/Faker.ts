@@ -1,6 +1,6 @@
 import faker from "faker";
-import { User, Address, BlogPost } from "../types";
-import { generateFullName } from "./helpers";
+import { User, Address, BlogPost, Todo } from "../types";
+import { generateFullName, generateArrayWith } from "./helpers";
 
 export const getUser = (): User => ({
   id: faker.random.uuid(),
@@ -13,7 +13,7 @@ export const getUser = (): User => ({
 });
 
 export const getUsers = (count: number): User[] =>
-  [...Array(count).keys()].map(() => getUser());
+  generateArrayWith<User>(getUser, count);
 
 export const getAddress = (): Address => ({
   streetName: faker.address.streetName(),
@@ -37,4 +37,13 @@ export const getBlogPost = (): BlogPost => ({
 });
 
 export const getBlogPosts = (count: number): BlogPost[] =>
-  [...Array(count).keys()].map(() => getBlogPost());
+  generateArrayWith<BlogPost>(getBlogPost, count);
+
+export const getTodo = (): Todo => ({
+  id: faker.random.uuid(),
+  title: faker.random.words(faker.random.number(6) + 1),
+  completed: faker.random.boolean(),
+});
+
+export const getTodos = (count: number): Todo[] =>
+  generateArrayWith<Todo>(getTodo, count);
