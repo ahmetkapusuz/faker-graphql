@@ -16,6 +16,7 @@ export type Query = {
   user?: Maybe<User>;
   users?: Maybe<Array<Maybe<User>>>;
   address?: Maybe<Address>;
+  blogPost?: Maybe<BlogPost>;
 };
 
 export type QueryUsersArgs = {
@@ -43,4 +44,15 @@ export type Address = {
   stateAbbr?: Maybe<Scalars["String"]>;
   country?: Maybe<Scalars["String"]>;
   countryCode?: Maybe<Scalars["String"]>;
+};
+
+export type BlogPost = {
+  __typename?: "BlogPost";
+  id?: Maybe<Scalars["ID"]>;
+  title?: Maybe<Scalars["String"]>;
+  body?: Maybe<Scalars["String"]>;
+  author?: Maybe<Scalars["String"]>;
+  publishedAt?: Maybe<Scalars["String"]>;
+  thumbnailImageUrl?: Maybe<Scalars["String"]>;
+  imageUrl?: Maybe<Scalars["String"]>;
 };
