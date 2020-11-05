@@ -35,6 +35,7 @@
     "apollo-datasource-rest": "^0.9.5",
     "apollo-server": "^2.19.0",
     "faker": "^5.1.0",
-    "graphql": "^15.4.0"
+    "graphql": "^15.4.0",
+    "graphql-tools": "^7.0.1"
   }
 }
