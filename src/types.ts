@@ -19,6 +19,7 @@ export type Query = {
 
 export type User = {
   __typename?: "User";
+  id?: Maybe<Scalars["ID"]>;
   firstName?: Maybe<Scalars["String"]>;
   lastName?: Maybe<Scalars["String"]>;
   email?: Maybe<Scalars["String"]>;

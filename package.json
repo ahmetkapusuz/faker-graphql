@@ -10,7 +10,7 @@
     "prettier:fix": "prettier --write ./src",
     "prettier:check": "prettier --check ./src",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
-    "generate": "graphql-codegen"
+    "generate": "graphql-codegen && prettier --write ./src/types.ts"
   },
   "keywords": [],
   "author": "Ahmet Kapusuz",
