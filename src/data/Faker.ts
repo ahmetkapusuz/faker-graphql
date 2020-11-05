@@ -3,6 +3,7 @@ import { User, Address } from "../types";
 
 export function getUser(): User {
   return {
+    id: faker.random.uuid(),
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
     email: faker.internet.email(),
@@ -23,4 +24,9 @@ export function getAddress(): Address {
     country: faker.address.country(),
     countryCode: faker.address.countryCode(),
   };
+}
+
+export function getUsers(count: number): User[] {
+  const users = [...Array(count).keys()].map(() => getUser());
+  return users;
 }
