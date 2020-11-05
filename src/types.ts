@@ -17,9 +17,14 @@ export type Query = {
   users?: Maybe<Array<Maybe<User>>>;
   address?: Maybe<Address>;
   blogPost?: Maybe<BlogPost>;
+  blogPosts?: Maybe<Array<Maybe<BlogPost>>>;
 };
 
 export type QueryUsersArgs = {
+  count?: Maybe<Scalars["Int"]>;
+};
+
+export type QueryBlogPostsArgs = {
   count?: Maybe<Scalars["Int"]>;
 };
 

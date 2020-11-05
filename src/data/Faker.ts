@@ -35,3 +35,6 @@ export const getBlogPost = (): BlogPost => ({
   thumbnailImageUrl: faker.image.imageUrl(200, 160),
   imageUrl: faker.image.imageUrl(1280, 720),
 });
+
+export const getBlogPosts = (count: number): BlogPost[] =>
+  [...Array(count).keys()].map(() => getBlogPost());

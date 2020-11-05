@@ -3,6 +3,7 @@ type Query {
   users(count: Int): [User]
   address: Address
   blogPost: BlogPost
+  blogPosts(count: Int): [BlogPost]
 }
 
 type User {
