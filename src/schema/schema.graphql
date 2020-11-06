@@ -1,0 +1,46 @@
+type Query {
+  user: User
+  users(count: Int): [User]
+  address: Address
+  blogPost: BlogPost
+  blogPosts(count: Int): [BlogPost]
+  todo: Todo
+  todos(count: Int): [Todo]
+}
+
+type User {
+  id: ID
+  firstName: String
+  lastName: String
+  email: String
+  userName: String
+  password: String
+  avatar: String
+}
+
+type Address {
+  streetName: String
+  streetSuffix: String
+  zipCode: String
+  county: String
+  state: String
+  stateAbbr: String
+  country: String
+  countryCode: String
+}
+
+type BlogPost {
+  id: ID
+  title: String
+  body: String
+  author: String
+  publishedAt: String
+  thumbnailImageUrl: String
+  imageUrl: String
+}
+
+type Todo {
+  id: ID
+  title: String
+  completed: Boolean
+}
