@@ -1,4 +1,4 @@
-import { User, Address, BlogPost, Todo } from "../types";
+import { User, Address, BlogPost, Todo, Movie } from "../types";
 import {
   getUser,
   getUsers,
@@ -7,6 +7,8 @@ import {
   getBlogPosts,
   getTodo,
   getTodos,
+  getMovie,
+  getMovies,
 } from "../data/Faker";
 
 export default {
@@ -18,4 +20,7 @@ export default {
     getBlogPosts(count),
   todo: (): Todo => getTodo(),
   todos: (_: unknown, { count }: { count: number }): Todo[] => getTodos(count),
+  movie: (): Movie => getMovie(),
+  movies: (_: unknown, { count }: { count: number }): Movie[] =>
+    getMovies(count),
 };
