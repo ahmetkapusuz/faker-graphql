@@ -52,6 +52,10 @@ You can always see all available queries and types in the [schema](https://githu
 - `blogPosts(count: Int): [BlogPost]`
 - `todo: Todo`
 - `todos(count: Int): [Todo]`
+- `movie: Movie`
+- `movies(count: Int): [Movie]`
+- `product: Product`
+- `products(count: Int): [Product]`
 
 **Example users query:**
 
