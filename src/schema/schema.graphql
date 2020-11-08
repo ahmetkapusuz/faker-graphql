@@ -8,6 +8,8 @@ type Query {
   todos(count: Int): [Todo]
   movie: Movie
   movies(count: Int): [Movie]
+  product: Product
+  products(count: Int): [Product]
 }
 
 type User {
@@ -56,4 +58,22 @@ type Movie {
   genres: [String]
   cast: [String]
   directors: [String]
+}
+
+type Image {
+  url: String
+  alt: String
+  width: Int
+  height: Int
+}
+
+type Product {
+  id: ID
+  name: String
+  description: String
+  color: String
+  price: String
+  category: String
+  images: [Image]
+  publishedAt: String
 }

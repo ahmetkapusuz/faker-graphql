@@ -22,6 +22,8 @@ export type Query = {
   todos?: Maybe<Array<Maybe<Todo>>>;
   movie?: Maybe<Movie>;
   movies?: Maybe<Array<Maybe<Movie>>>;
+  product?: Maybe<Product>;
+  products?: Maybe<Array<Maybe<Product>>>;
 };
 
 export type QueryUsersArgs = {
@@ -37,6 +39,10 @@ export type QueryTodosArgs = {
 };
 
 export type QueryMoviesArgs = {
+  count?: Maybe<Scalars["Int"]>;
+};
+
+export type QueryProductsArgs = {
   count?: Maybe<Scalars["Int"]>;
 };
 
@@ -91,4 +97,24 @@ export type Movie = {
   genres?: Maybe<Array<Maybe<Scalars["String"]>>>;
   cast?: Maybe<Array<Maybe<Scalars["String"]>>>;
   directors?: Maybe<Array<Maybe<Scalars["String"]>>>;
+};
+
+export type Image = {
+  __typename?: "Image";
+  url?: Maybe<Scalars["String"]>;
+  alt?: Maybe<Scalars["String"]>;
+  width?: Maybe<Scalars["Int"]>;
+  height?: Maybe<Scalars["Int"]>;
+};
+
+export type Product = {
+  __typename?: "Product";
+  id?: Maybe<Scalars["ID"]>;
+  name?: Maybe<Scalars["String"]>;
+  description?: Maybe<Scalars["String"]>;
+  color?: Maybe<Scalars["String"]>;
+  price?: Maybe<Scalars["String"]>;
+  category?: Maybe<Scalars["String"]>;
+  images?: Maybe<Array<Maybe<Image>>>;
+  publishedAt?: Maybe<Scalars["String"]>;
 };

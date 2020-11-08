@@ -1,5 +1,5 @@
 import faker from "faker";
-import { User, Address, BlogPost, Todo, Movie } from "../types";
+import { User, Address, BlogPost, Todo, Movie, Image, Product } from "../types";
 import { generateFullName, generateArrayWith } from "./helpers";
 
 export const getUser = (): User => ({
@@ -55,7 +55,7 @@ export const getMovie = (): Movie => ({
   posterURL: faker.image.imageUrl(250, 360),
   rating: faker.random.number(5),
   genres: generateArrayWith<string>(
-    faker.random.word,
+    () => faker.random.word(),
     faker.random.number(3) + 1
   ),
   cast: generateArrayWith<string>(generateFullName, faker.random.number(5) + 1),
@@ -67,3 +67,41 @@ export const getMovie = (): Movie => ({
 
 export const getMovies = (count: number): Movie[] =>
   generateArrayWith<Movie>(getMovie, count);
+
+interface GetImageArgs {
+  width?: number;
+  height?: number;
+}
+
+export const getImage = (args: GetImageArgs = {}): Image => {
+  // Set default values if width or height is not initialized with a value
+  const {
+    width = faker.random.number({ max: 2000, min: 200, precision: 50 }),
+    height = faker.random.number({ max: 2000, min: 200, precision: 50 }),
+  } = args;
+
+  return {
+    url: faker.image.imageUrl(width, height),
+    alt: faker.lorem.sentence(6),
+    width,
+    height,
+  };
+};
+
+export const getProduct = (): Product => ({
+  id: faker.random.uuid(),
+  name: faker.commerce.productName(),
+  description: faker.commerce.productDescription(),
+  color: faker.commerce.color(),
+  price: faker.commerce.price(),
+  category: faker.commerce.department(),
+  images: generateArrayWith<Image, GetImageArgs>(
+    getImage,
+    faker.random.number({ max: 8, min: 2 }),
+    { width: 200, height: 300 }
+  ),
+  publishedAt: faker.date.past().toUTCString(),
+});
+
+export const getProducts = (count: number): Product[] =>
+  generateArrayWith<Product>(getProduct, count);
