@@ -6,6 +6,8 @@ type Query {
   blogPosts(count: Int): [BlogPost]
   todo: Todo
   todos(count: Int): [Todo]
+  product: Product
+  products(count: Int): [Product]
 }
 
 type User {
@@ -43,4 +45,22 @@ type Todo {
   id: ID
   title: String
   completed: Boolean
+}
+
+type Image {
+  url: String
+  alt: String
+  width: Int
+  height: Int
+}
+
+type Product {
+  id: ID
+  name: String
+  description: String
+  color: String
+  price: String
+  category: String
+  images: [Image]
+  publishedAt: String
 }
