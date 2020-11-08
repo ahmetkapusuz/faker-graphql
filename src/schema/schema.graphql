@@ -6,6 +6,8 @@ type Query {
   blogPosts(count: Int): [BlogPost]
   todo: Todo
   todos(count: Int): [Todo]
+  movie: Movie
+  movies(count: Int): [Movie]
   product: Product
   products(count: Int): [Product]
 }
@@ -45,6 +47,17 @@ type Todo {
   id: ID
   title: String
   completed: Boolean
+}
+
+type Movie {
+  id: ID
+  title: String
+  overview: String
+  posterURL: String
+  rating: Int
+  genres: [String]
+  cast: [String]
+  directors: [String]
 }
 
 type Image {

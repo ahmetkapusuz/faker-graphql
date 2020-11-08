@@ -1,5 +1,5 @@
 import faker from "faker";
-import { User, Address, BlogPost, Todo, Image, Product } from "../types";
+import { User, Address, BlogPost, Todo, Movie, Image, Product } from "../types";
 import { generateFullName, generateArrayWith } from "./helpers";
 
 export const getUser = (): User => ({
@@ -47,6 +47,26 @@ export const getTodo = (): Todo => ({
 
 export const getTodos = (count: number): Todo[] =>
   generateArrayWith<Todo>(getTodo, count);
+
+export const getMovie = (): Movie => ({
+  id: faker.random.uuid(),
+  title: faker.random.words(faker.random.number(4) + 1),
+  overview: faker.lorem.paragraphs(3),
+  posterURL: faker.image.imageUrl(250, 360),
+  rating: faker.random.number(5),
+  genres: generateArrayWith<string>(
+    () => faker.random.word(),
+    faker.random.number(3) + 1
+  ),
+  cast: generateArrayWith<string>(generateFullName, faker.random.number(5) + 1),
+  directors: generateArrayWith<string>(
+    generateFullName,
+    faker.random.number(1) + 1
+  ),
+});
+
+export const getMovies = (count: number): Movie[] =>
+  generateArrayWith<Movie>(getMovie, count);
 
 interface GetImageArgs {
   width?: number;
