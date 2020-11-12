@@ -10,6 +10,8 @@ type Query {
   movies(count: Int): [Movie]
   product: Product
   products(count: Int): [Product]
+  photo: Photo
+  photos(count: Int): [Photo]
 }
 
 type User {
@@ -53,7 +55,7 @@ type Movie {
   id: ID
   title: String
   overview: String
-  posterURL: String
+  posterUrl: String
   rating: Int
   genres: [String]
   cast: [String]
@@ -76,4 +78,23 @@ type Product {
   category: String
   images: [Image]
   publishedAt: String
+}
+
+type PhotoUrls {
+  original: String
+  thumbnail: String
+  small: String
+  medium: String
+  large: String
+}
+
+type Photo {
+  id: ID
+  width: Int
+  height: Int
+  createdAt: String
+  color: String
+  description: String
+  category: String
+  urls: PhotoUrls
 }

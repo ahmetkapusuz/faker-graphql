@@ -1,6 +1,20 @@
 import faker from "faker";
-import { User, Address, BlogPost, Todo, Movie, Image, Product } from "../types";
-import { generateFullName, generateArrayWith } from "./helpers";
+import {
+  User,
+  Address,
+  BlogPost,
+  Todo,
+  Movie,
+  Image,
+  Product,
+  Photo,
+  PhotoUrls,
+} from "../types";
+import {
+  generateFullName,
+  generateArrayWith,
+  changeImageUrlSizes,
+} from "./helpers";
 
 export const getUser = (): User => ({
   id: faker.random.uuid(),
@@ -52,7 +66,7 @@ export const getMovie = (): Movie => ({
   id: faker.random.uuid(),
   title: faker.random.words(faker.random.number(4) + 1),
   overview: faker.lorem.paragraphs(3),
-  posterURL: faker.image.imageUrl(250, 360),
+  posterUrl: faker.image.imageUrl(250, 360),
   rating: faker.random.number(5),
   genres: generateArrayWith<string>(
     () => faker.random.word(),
@@ -105,3 +119,44 @@ export const getProduct = (): Product => ({
 
 export const getProducts = (count: number): Product[] =>
   generateArrayWith<Product>(getProduct, count);
+
+export const getPhoto = (): Photo => {
+  const width = faker.random.number({ max: 2000, min: 200, precision: 50 });
+  const height = faker.random.number({ max: 2000, min: 200, precision: 50 });
+
+  const imageUrl = faker.image.imageUrl(width, height);
+
+  const urls: PhotoUrls = {
+    original: imageUrl,
+    thumbnail: changeImageUrlSizes(imageUrl, width, height, 30, 30),
+    small: changeImageUrlSizes(
+      imageUrl,
+      width,
+      height,
+      Math.round(width / 4),
+      Math.round(height / 4)
+    ),
+    medium: changeImageUrlSizes(
+      imageUrl,
+      width,
+      height,
+      Math.round(width / 2),
+      Math.round(height / 2)
+    ),
+    large: changeImageUrlSizes(imageUrl, width, height, width * 2, height * 2),
+  };
+
+  return {
+    id: faker.random.uuid(),
+    width,
+    height,
+    createdAt: faker.date.past().toUTCString(),
+    color: faker.internet.color(),
+    description: faker.lorem.sentence(faker.random.number({ max: 12, min: 4 })),
+    category: faker.random.word(),
+    urls,
+  };
+};
+
+export const getPhotos = (count: number): Photo[] =>
+  generateArrayWith<Photo>(getPhoto, count);
