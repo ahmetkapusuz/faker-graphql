@@ -97,6 +97,10 @@ You can always see all available queries and types in the [schema](https://githu
 }
 ```
 
+## Example Client Application
+
+This is a sample photo gallery with an infinite scroll that uses faker-graphql: https://codesandbox.io/s/fakergraphqlclientexample-fysnd
+
 ## Roadmap
 
 See the [open issues](https://github.com/ahmetkapusuz/faker-graphql/issues).
